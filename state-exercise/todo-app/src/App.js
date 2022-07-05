@@ -16,14 +16,18 @@ class App extends React.Component{
   addItem = () => {
     if (this.state.item){
       var newList = this.state.list.slice();
+      newList.push(this.state.item);
       this.setState({list: newList})
     }
-    console.log(this.state.list);
+    this.setState({
+      item: ''
+    })
   }
   render(){
     return (
         <div style={{textAlign: 'center'}}>
-          <input type="text" onChange={this.handleChange}>
+          <h1>Todo List</h1>
+          <input type="text" onChange={this.handleChange} value={this.state.item}>
           </input>
           <button onClick={this.addItem}>Add</button>
           <h1>{this.state.list.map((item) =>{
